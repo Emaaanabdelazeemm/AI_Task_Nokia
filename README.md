@@ -1,7 +1,7 @@
 # Nokia RAG Pipeline Assignment 
 
 ## Project Overview
-This project implements a Retrieval-Augmented Generation (RAG) system inside a Google Colab notebook to query technical documentation regarding Nokia 1830 PSS equipment. The notebook covers data ingestion, text chunking, vector retrieval, and robust out-of-domain query handling.
+This project implements a Retrieval-Augmented Generation (RAG) system inside a Google Colab notebook to query technical documentation regarding Nokia 1830 PSS equipment.
 
 ---
 
@@ -15,7 +15,8 @@ This project implements a Retrieval-Augmented Generation (RAG) system inside a G
 
 ## Key Features & Implementation Details
 * **Data Parsing & Chunking**: Text and tables are split with a maximum chunk size of 2000 characters, utilizing a split-by-title and recursive approach to preserve structural headings and equipment context.
-* **Retrieval System ($k$ and Hybrid Search)**: Configured to retrieve the top $k = 5$ most relevant context chunks. A **Hybrid Search** approach combining dense vector embeddings (ChromaDB + Sentence Transformers `all-MiniLM-L6-v2`) with sparse keyword matching (`BM25Okapi`) was implemented to fix retrieval misses on specific technical part numbers.
+* **Retrieval System ($k$ and Hybrid Search)**: Configured to retrieve the top $k = 5$ most relevant context chunks.
+* **Hybrid Search** approach combining dense vector embeddings (ChromaDB + Sentence Transformers `all-MiniLM-L6-v2`) with sparse keyword matching (`BM25Okapi`) was implemented to fix retrieval misses on specific technical part numbers.
 * **Handling "I Don't Know" (Q8 Guardrails)**: Implements system instructions and prompt constraints so the model refuses to hallucinate and correctly states when information is missing, following the rule: *"A RAG system that never says 'I don't know' is more dangerous than no RAG system at all."*
 
 ---
